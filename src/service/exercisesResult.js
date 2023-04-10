@@ -413,6 +413,9 @@ exports.getResultObj = async function (exerciseId, costThreshold, cookie) {
     let concernSourceCountMap = {};
     concernQuestions.forEach(q => {
         let solutionObj = solutionMap[q.questionId];
+        if (!solutionObj) {
+            return false;
+        }
         // 题干
         q.content = solutionObj.content; // html
         // 选项
@@ -433,9 +436,8 @@ exports.getResultObj = async function (exerciseId, costThreshold, cookie) {
         });
 
         q.hasCollect = collectionIds.some(qid => qid == q.questionId);
-
         q.keypoints = solutionObj.keypoints ? solutionObj.keypoints.map(i => i.name) : [];
-        q.tags = solutionObj.tags.map(i => i.name);
+        q.tags = solutionObj.tags ? solutionObj.tags.map(i => i.name) : [];
 
         // 答案解析
         q.solution = solutionObj.solution; // html
