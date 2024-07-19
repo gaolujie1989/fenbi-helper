@@ -23,9 +23,8 @@ exports.login = async function (phone, password, captcha) {
 
     return await new Promise(function (resolve, reject) {
         request({
-            url: 'https://login.fenbi.com/api/users/loginV2',
+            url: 'https://login.fenbi.com/api/users/loginV2?app=web&kav=100&av=100&hav=100&version=3.0.0.0',
             method: 'POST',
-            json: true,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
