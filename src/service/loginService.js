@@ -23,7 +23,7 @@ exports.login = async function (phone, password, captcha) {
 
     return await new Promise(function (resolve, reject) {
         request({
-            url: 'https://tiku.fenbi.com/api/users/loginV2',
+            url: 'https://login.fenbi.com/api/users/loginV2',
             method: 'POST',
             json: true,
             headers: {
